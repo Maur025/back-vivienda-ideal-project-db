@@ -4,6 +4,11 @@
 
 Project to create an API for the vivienda-ideal database.
 
+Project compose of 2 repositories:
+
+- [Frontend](https://github.com/Maur025/front-vivienda-ideal-project-db).
+- [Backend](https://github.com/Maur025/back-vivienda-ideal-project-db).
+
 ## Project setup
 
 Project require pnpm package manager. If not installed, please install it first.
