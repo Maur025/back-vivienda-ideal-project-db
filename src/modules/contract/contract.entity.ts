@@ -4,6 +4,7 @@ import { Property } from '../property/property.entity';
 import { Client } from '../client/client.entity';
 import { Agent } from '../agent/agent.entity';
 import { ContractState } from '../contract-state/contract-state.entity';
+import { ContractType } from '../contract-type/contract-type.entity';
 
 @Entity({ name: 'contracts' })
 export class Contract extends BaseAuditEntity {
@@ -24,6 +25,9 @@ export class Contract extends BaseAuditEntity {
 
   @Column({ name: 'contract_state_id', nullable: false })
   contractStateId: string;
+
+  @Column({ name: 'contract_number', nullable: false })
+  contractNumber: string;
 
   @ManyToOne(() => ContractState)
   @JoinColumn({ name: 'contract_state_id', referencedColumnName: 'id' })
@@ -56,4 +60,11 @@ export class Contract extends BaseAuditEntity {
   @ManyToOne(() => Agent)
   @JoinColumn({ name: 'agent_id', referencedColumnName: 'id' })
   agent: Agent;
+
+  @Column({ name: 'contract_type_id', type: 'uuid', nullable: false })
+  contractTypeId: string;
+
+  @ManyToOne(() => ContractType)
+  @JoinColumn({ name: 'contract_type_id', referencedColumnName: 'id' })
+  contractType: ContractType;
 }

@@ -20,6 +20,11 @@ To install all dependencies, run:
 $ pnpm install
 ```
 
+before run please review:
+
+- [env.example](.env.example)
+- [seeder data](seeder/vivienda-seeder.sql)
+
 ## Compile and run the project
 
 ```bash

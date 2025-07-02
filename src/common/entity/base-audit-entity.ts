@@ -21,6 +21,6 @@ export abstract class BaseAuditEntity extends BaseEntity {
   @Column({ name: 'updated_by', nullable: true })
   updatedBy: string;
 
-  @VersionColumn({ name: 'version' })
+  @VersionColumn({ name: 'version', default: 0 })
   version: number;
 }

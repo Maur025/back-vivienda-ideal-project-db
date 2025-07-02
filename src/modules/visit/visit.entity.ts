@@ -9,6 +9,9 @@ export class Visit extends BaseAuditEntity {
   @Column({ name: 'visit_date', type: 'datetime', nullable: false })
   visitDate: Date;
 
+  @Column({ name: 'code', length: 50, nullable: true })
+  code: string;
+
   @Column({ name: 'property_id', type: 'uuid', nullable: false })
   propertyId: string;
 
