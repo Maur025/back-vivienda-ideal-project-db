@@ -102,7 +102,10 @@ export class ContractService {
     return query.getMany();
   }
 
-  findTotalsBycontractType() {
+  findTotalsBycontractType(dateRequest: Date) {
+    const monthUse = dateRequest.getMonth() + 1; // getMonth() returns 0-11, so we add 1 for the month number
+    const yearUse = dateRequest.getFullYear(); // getFullYear() returns the full year
+
     return this.repository
       .createQueryBuilder('contract')
       .leftJoin('contract.contractType', 'contractType')
@@ -115,6 +118,10 @@ export class ContractService {
       .addSelect('contractType.name', 'name')
       .addSelect('SUM(commission.amount)', 'commissions')
       .addSelect('SUM(pay.amount)', 'pays')
+      .where(
+        'MONTH(contract.startDate) = :month AND YEAR(contract.startDate) = :year',
+        { month: monthUse, year: yearUse },
+      )
       .groupBy('contract.contractTypeId,contractType.name')
       .getRawMany();
   }

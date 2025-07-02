@@ -33,7 +33,8 @@ export class ContractController {
   }
 
   @Get('contract-types')
-  findAllContractTypes() {
-    return this.contractService.findTotalsBycontractType();
+  @ApiQuery({ name: 'date', required: true, type: String })
+  findAllContractTypes(@Query('date') date: Date) {
+    return this.contractService.findTotalsBycontractType(new Date(date));
   }
 }
