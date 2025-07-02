@@ -1,10 +1,12 @@
 import { BaseAuditEntity } from 'src/common/entity/base-audit-entity';
-import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from 'typeorm';
 import { Property } from '../property/property.entity';
 import { Client } from '../client/client.entity';
 import { Agent } from '../agent/agent.entity';
 import { ContractState } from '../contract-state/contract-state.entity';
 import { ContractType } from '../contract-type/contract-type.entity';
+import { Commission } from '../commission/commission.entity';
+import { Payment } from '../payment/payment.entity';
 
 @Entity({ name: 'contracts' })
 export class Contract extends BaseAuditEntity {
@@ -67,4 +69,10 @@ export class Contract extends BaseAuditEntity {
   @ManyToOne(() => ContractType)
   @JoinColumn({ name: 'contract_type_id', referencedColumnName: 'id' })
   contractType: ContractType;
+
+  @OneToMany(() => Commission, (commission) => commission.contract)
+  commissions: Commission[];
+
+  @OneToMany(() => Payment, (payment) => payment.contract)
+  payments: Payment[];
 }
