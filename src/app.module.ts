@@ -9,7 +9,6 @@ import { CommissionModule } from './modules/commission/commission.module';
 import { ContractModule } from './modules/contract/contract.module';
 import { PaymentModule } from './modules/payment/payment.module';
 import { PropertyModule } from './modules/property/property.module';
-import { PaymentTypeModule } from './modules/payment-type/payment-type.module';
 import { PaymentMethodModule } from './modules/payment-method/payment-method.module';
 import { PayModule } from './modules/pay/pay.module';
 import { PaymentPlanModule } from './modules/payment-plan/payment-plan.module';
@@ -20,6 +19,7 @@ import { AgentModule } from './modules/agent/agent.module';
 import { ClientTypeModule } from './modules/client-type/client-type.module';
 import { PropertyTypeModule } from './modules/property-type/property-type.module';
 import { ContractStateModule } from './modules/contract-state/contract-state.module';
+import { ContractTypeModule } from './modules/contract-type/contract-type.module';
 
 @Module({
   imports: [
@@ -46,7 +46,6 @@ import { ContractStateModule } from './modules/contract-state/contract-state.mod
     ContractModule,
     PaymentModule,
     PropertyModule,
-    PaymentTypeModule,
     PaymentMethodModule,
     PayModule,
     PaymentPlanModule,
@@ -57,6 +56,7 @@ import { ContractStateModule } from './modules/contract-state/contract-state.mod
     ClientTypeModule,
     PropertyTypeModule,
     ContractStateModule,
+    ContractTypeModule,
   ],
   controllers: [AppController],
   providers: [AppService],
