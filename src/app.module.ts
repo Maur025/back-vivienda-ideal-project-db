@@ -13,7 +13,6 @@ import { PaymentTypeModule } from './modules/payment-type/payment-type.module';
 import { PaymentMethodModule } from './modules/payment-method/payment-method.module';
 import { PayModule } from './modules/pay/pay.module';
 import { PaymentPlanModule } from './modules/payment-plan/payment-plan.module';
-import { CashPaymentModule } from './modules/cash-payment/cash-payment.module';
 import { VisitModule } from './modules/visit/visit.module';
 import { FeedbackModule } from './modules/feedback/feedback.module';
 import { ClientModule } from './modules/client/client.module';
@@ -51,7 +50,6 @@ import { ContractStateModule } from './modules/contract-state/contract-state.mod
     PaymentMethodModule,
     PayModule,
     PaymentPlanModule,
-    CashPaymentModule,
     VisitModule,
     FeedbackModule,
     ClientModule,
