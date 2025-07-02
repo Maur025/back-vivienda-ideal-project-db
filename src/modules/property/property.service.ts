@@ -16,6 +16,7 @@ export class PropertyService {
       .leftJoin('property.visits', 'visit')
       .leftJoin('visit.client', 'client')
       .select('property.name', 'name')
+      .addSelect('property.id', 'id')
       .addSelect('GROUP_CONCAT(DISTINCT client.name)', 'clients')
       .addSelect('COUNT(visit.id)', 'visitQuantity')
       .groupBy('property.id')

@@ -21,6 +21,7 @@ export class AgentService {
       )
       .addSelect('COUNT(DISTINCT contract.id)', 'contractQuantity')
       .addSelect('SUM(COALESCE(commission.amount,0))', 'totalAmount')
+      .addSelect('agent.id', 'id')
       .groupBy('agent.id')
       .getRawMany();
   }
