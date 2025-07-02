@@ -1,6 +1,7 @@
 import { BaseAuditEntity } from 'src/common/entity/base-audit-entity';
-import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from 'typeorm';
 import { Payment } from '../payment/payment.entity';
+import { Pay } from '../pay/pay.entity';
 
 @Entity({ name: 'payment_plans' })
 export class PaymentPlan extends BaseAuditEntity {
@@ -22,4 +23,7 @@ export class PaymentPlan extends BaseAuditEntity {
   @ManyToOne(() => Payment)
   @JoinColumn({ name: 'payment_id', referencedColumnName: 'id' })
   payment: Payment;
+
+  @OneToMany(() => Pay, (pay) => pay.paymentPlan)
+  pays: Pay[];
 }

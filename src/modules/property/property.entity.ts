@@ -1,9 +1,10 @@
 import { BaseAuditEntity } from 'src/common/entity/base-audit-entity';
-import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from 'typeorm';
 import { City } from '../city/city.entity';
 import { Branch } from '../branch/branch.entity';
 import { Client } from '../client/client.entity';
 import { PropertyType } from '../property-type/property-type.entity';
+import { Visit } from '../visit/visit.entity';
 
 @Entity({ name: 'properties' })
 export class Property extends BaseAuditEntity {
@@ -46,4 +47,7 @@ export class Property extends BaseAuditEntity {
   @ManyToOne(() => PropertyType)
   @JoinColumn({ name: 'property_type_id', referencedColumnName: 'id' })
   propertyType: PropertyType;
+
+  @OneToMany(() => Visit, (visit) => visit.property)
+  visits: Visit[];
 }

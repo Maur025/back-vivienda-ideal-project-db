@@ -1,6 +1,8 @@
 import { BaseAuditEntity } from 'src/common/entity/base-audit-entity';
-import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from 'typeorm';
 import { Branch } from '../branch/branch.entity';
+import { Commission } from '../commission/commission.entity';
+import { Contract } from '../contract/contract.entity';
 
 @Entity({ name: 'agents' })
 export class Agent extends BaseAuditEntity {
@@ -19,4 +21,10 @@ export class Agent extends BaseAuditEntity {
   @ManyToOne(() => Branch)
   @JoinColumn({ name: 'branch_id', referencedColumnName: 'id' })
   branch: Branch;
+
+  @OneToMany(() => Commission, (commission) => commission.agent)
+  commissions: Commission[];
+
+  @OneToMany(() => Contract, (contract) => contract.agent)
+  contracts: Contract[];
 }
