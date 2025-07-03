@@ -27,8 +27,8 @@ export class ContractController {
       contractTypeId,
       clientContractingId,
       clientObligorId,
-      from,
-      to,
+      from: from ? new Date(from) : undefined,
+      to: to ? new Date(to) : undefined,
     });
   }
 
